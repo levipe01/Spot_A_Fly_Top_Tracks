@@ -1,24 +1,46 @@
 
-const webpack = require('webpack');
-const path = require('path');
+// const webpack = require('webpack');
+// const path = require('path');
+
+// module.exports = {
+//   context: __dirname + '/client',
+//   entry: '/index.js',
+//   module: {
+//     rules: [
+//       {
+//         test: /\.jsx?$/,
+//         exclude: /node_modules/,
+//         loader: 'babel-loader',
+//         options: {
+//           presets: ['@babel/preset-react', '@babel-preset-env']
+//         },
+//       },
+//     ],
+//   },
+//   output: {
+//     path: __dirname + '/dist',
+//     filename: 'bundle.js',
+//   }
+// };
 
 module.exports = {
-  context: __dirname + '/client',
-  entry: './index.js',
+  entry: __dirname + '/client/src/index.jsx',
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.jsx?$/,
+        test: [/\.jsx$/],
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015', 'env']
-        },
-      },
-    ],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-react', '@babel/preset-env']
+          }
+        }
+      }
+    ]
   },
-  output: {
-    path: __dirname + '/dist',
+   output: {
     filename: 'bundle.js',
+    path: __dirname + '/client/dist'
   }
 };
