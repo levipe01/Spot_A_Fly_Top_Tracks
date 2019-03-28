@@ -19,7 +19,6 @@ const songSchema = new mongoose.Schema({
 
 const Song = mongoose.model('Song', songSchema);
 
-
 // // Seed Data Generator
 
 db.dropDatabase()
@@ -38,8 +37,3 @@ const dummyData = (bands, songs, images) => {
 }
 
 dummyData(data.bands, data.songs, data.images)
-
-// module.exports = {
-//   Song,
-//   db
-// }

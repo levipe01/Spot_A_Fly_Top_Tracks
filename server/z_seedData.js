@@ -1,6 +1,3 @@
-// const fetch = require('node-fetch')
-// const mongo = require('./db')
-
 var generateBandNames = () => {
   var bandNames = [];
   for (let i = 0; i < 100; i++) {
@@ -333,25 +330,6 @@ let images = [
 "https://images.unsplash.com/35/BIR62RGGjGxN5nrbnzwu_3.jpg?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=120&h=120&fit=crop&ixid=eyJhcHBfaWQiOjF9",
 "https://images.unsplash.com/photo-1502771498473-c112f905a912?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=120&h=120&fit=crop&ixid=eyJhcHBfaWQiOjF9"
 ];
-
-
-// Seed Data Generator
-
-
-// const dummyData = (bands, songs, images) => {
-//   for (let i = 0; i < 100; i++) {
-//     let song = new mongo.Song({
-//       name: songs[i],
-//       artist: bands[i],
-//       image: images[i],
-//       playCount: Math.floor(Math.random() * 10000),
-//       length: `${Math.floor(3 + (Math.random() * 3))}:${Math.floor(Math.random() * 60)}`
-//     })
-//     song.save();
-//   }
-// }
-
-// dummyData(bands, songs, images)
 
 
 module.exports = {
