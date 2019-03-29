@@ -19,6 +19,21 @@ const songSchema = new mongoose.Schema({
 
 const Song = mongoose.model('Song', songSchema);
 
+// const getTopTracks = () => {
+//   return new Promise((resolve, reject) => {
+//     Song.find({}, 'name image playCount length -_id', (err, data) => {
+//       err ? reject(err) : resolve(data)
+//     }).limit(5).sort('-playCount')
+//   })
+// }
+
+const getTopTracks = () => {
+  return Song.find({}, 'name image playCount length -_id')
+    .limit(5)
+    .sort('-playCount')
+    .exec();
+};
+
 // // Seed Data Generator
 
 db.dropDatabase()
@@ -37,3 +52,9 @@ const dummyData = (bands, songs, images) => {
 }
 
 dummyData(data.bands, data.songs, data.images)
+
+module.exports.getTopTracks = getTopTracks
+module.exports.bands = data.bands
+module.exports.songs = data.songs
+module.exports.images = data.images
+module.exports.dummyData = dummyData
