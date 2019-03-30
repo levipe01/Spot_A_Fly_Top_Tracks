@@ -1,8 +1,9 @@
 // Database Setup
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/topTracks');
 const data = require('./z_seedData.js');
+
+mongoose.connect('mongodb://localhost:27017/topTracks');
 
 const db = mongoose.connection;
 
@@ -27,34 +28,32 @@ const Song = mongoose.model('Song', songSchema);
 //   })
 // }
 
-const getTopTracks = () => {
-  return Song.find({}, 'name image playCount length -_id')
-    .limit(5)
-    .sort('-playCount')
-    .exec();
-};
+const getTopTracks = () => Song.find({}, '_id name image playCount length')
+  .limit(5)
+  .sort('-playCount')
+  .exec();
 
 // // Seed Data Generator
 
-db.dropDatabase()
+db.dropDatabase();
 
 const dummyData = (bands, songs, images) => {
   for (let i = 0; i < 100; i++) {
-    let song = new Song({
+    const song = new Song({
       name: songs[i],
       artist: bands[i],
       image: images[i],
       playCount: Math.floor(Math.random() * 10000),
-      length: `${Math.floor(3 + (Math.random() * 3))}:${Math.floor((Math.random() * 60).toFixed(2))}`
-    })
+      length: `${Math.floor(3 + (Math.random() * 3))}:${Math.floor((Math.random() * 60))}`
+    });
     song.save();
   }
-}
+};
 
-dummyData(data.bands, data.songs, data.images)
+dummyData(data.bands, data.songs, data.images);
 
-module.exports.getTopTracks = getTopTracks
-module.exports.bands = data.bands
-module.exports.songs = data.songs
-module.exports.images = data.images
-module.exports.dummyData = dummyData
+module.exports.getTopTracks = getTopTracks;
+module.exports.bands = data.bands;
+module.exports.songs = data.songs;
+module.exports.images = data.images;
+module.exports.dummyData = dummyData;
