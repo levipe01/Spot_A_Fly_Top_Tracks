@@ -24,6 +24,7 @@ class App extends Component {
 
   render() {
     const { tracks } = this.state;
+   
     return (
       <div id="main">
         <div id="left" />

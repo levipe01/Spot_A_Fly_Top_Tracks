@@ -19,18 +19,20 @@ describe('getTopTracks functions', () => {
     return getTopTracks()
       .then(results => expect(results.length).toBe(5));
   });
-  
-  // test('getTopTracks should return 5 items', async () => {
-  //   expect.assertions(1);
-  //   const data = await getTopTracks();
-  //   expect(data.length).toBe(5);
-  // });
+
+  test('getTopTracks should return objects with properties _id, name, image, playCount, and length', () => {
+    expect(tracks[0]).toHaveProperty('_id', 'name', 'image', 'playCount', 'length');
+  });
 });
 
 describe('dummyData verification', () => {
-  test('dummyData should contain 100 records of songs, bands, and artists', () => {
+  test('songs, bands, and artists should all contain 100 records', () => {
     expect(bands).toHaveLength(100);
     expect(songs).toHaveLength(100);
     expect(images).toHaveLength(100);
+  });
+
+  test('dummyData should be a function', () => {
+    expect(typeof dummyData).toBe('function');
   });
 });

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Ellipsis from './Ellipsis.jsx';
 
 function PopularTrack({ track }) {
   return (
@@ -17,9 +18,7 @@ function PopularTrack({ track }) {
         </div>
       </div>
       <div className="flex3">
-        <div className="ellipsis">
-          <i className="fas fa-ellipsis-h" />
-        </div>
+        <Ellipsis />
         <div className="trackLength">
           {track.length}
         </div>
@@ -29,7 +28,9 @@ function PopularTrack({ track }) {
 }
 
 PopularTrack.propTypes = {
-  track: PropTypes.isRequired,
+  track: PropTypes.isRequired
+  // menu: PropTypes.isRequired,
+  // showMenu: PropTypes.isRequired,
 };
 
 export default PopularTrack;

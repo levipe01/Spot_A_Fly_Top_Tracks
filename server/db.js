@@ -44,7 +44,7 @@ const dummyData = (bands, songs, images) => {
       artist: bands[i],
       image: images[i],
       playCount: Math.floor(Math.random() * 10000),
-      length: `${Math.floor(3 + (Math.random() * 3))}:${Math.floor((Math.random() * 60))}`
+      length: `${Math.floor(3 + (Math.random() * 3))}:${Math.floor(10 + (Math.random() * 50))}`
     });
     song.save();
   }

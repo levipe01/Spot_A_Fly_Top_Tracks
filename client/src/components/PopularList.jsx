@@ -11,7 +11,9 @@ function PopularList({ tracks }) {
 }
 
 PopularList.propTypes = {
-  tracks: PropTypes.isRequired,
+  tracks: PropTypes.isRequired
+  // menu: PropTypes.isRequired,
+  // showMenu: PropTypes.isRequired,
 };
 
 export default PopularList;
