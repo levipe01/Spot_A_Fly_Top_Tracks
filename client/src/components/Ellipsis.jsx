@@ -20,12 +20,12 @@ class Ellipsis extends Component {
     const { menu } = this.state;
     switch (menu) {
       case false: return (
-        <div className="ellipsis" onClick={this.toggleMenu}>
+        <div className="ellipsis" onClick={this.toggleMenu} data-testid="ellipsis">
           <i className="fas fa-ellipsis-h" />
         </div>
       );
       case true: return (
-        <div className="contextMenu" onClick={this.toggleMenu}>
+        <div className="contextMenu" onClick={this.toggleMenu} data-testid="context-menu">
           <div>Start Radio</div>
           <div>Save to Your Library</div>
           <div>Add to Queue</div>

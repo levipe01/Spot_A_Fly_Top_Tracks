@@ -6,7 +6,18 @@ module.exports = {
   clearMocks: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  collectCoverageFrom: ['src/**/*.{js,jsx,mjs}'],
+  // collectCoverageFrom: ['src/**/*.{js,jsx,mjs}'],
+
+  collectCoverageFrom: [
+    '**/*.{js,jsx}',
+    '!**/node_modules/**',
+    '!**/testing/**',
+    '!**/dist/**',
+    '!**/*.config.js',
+    '!**/coverage/**',
+    '!**/transform.js**',
+    '!**/server/server.js**',
+  ],
 
   // The directory where Jest should output its coverage files
   coverageDirectory: 'coverage',
@@ -18,7 +29,7 @@ module.exports = {
   setupFiles: ['<rootDir>/enzyme.config.js'],
 
   // The test environment that will be used for testing
-  testEnvironment: 'node',
+  testEnvironment: 'jsdom',
 
   // The glob patterns Jest uses to detect test files
   testMatch: ['**/__tests__/**/*.js?(x)', '**/?(*.)+(spec|test).js?(x)'],
@@ -30,7 +41,17 @@ module.exports = {
   testURL: 'http://localhost:3003',
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-  transformIgnorePatterns: ['<rootDir>/node_modules/'],
+  transformIgnorePatterns: [
+    '/node_modules/(?!<MODULE_NAME>).+\\.js$', // added
+    '<rootDir>/node_modules/'
+  ],
+
+  transform: {
+    // '^.+\\.(js|ts|tsx)?$': './transform.js', // added
+    '^.+\\.jsx?$': './transform.js', // added
+    '^.+\\.jsx$': 'babel-jest',
+    '^.+\\.js$': 'babel-jest'
+  },
   
   // Indicates whether each individual test should be reported during the run
   verbose: false,

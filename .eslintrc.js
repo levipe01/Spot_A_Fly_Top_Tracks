@@ -31,6 +31,7 @@ module.exports = {
         "no-trailing-spaces": "off",
         "no-plusplus": "off",
         "import/extensions": "off",
-        "no-underscore-dangle": "off"
+        "no-underscore-dangle": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
     }
 };
