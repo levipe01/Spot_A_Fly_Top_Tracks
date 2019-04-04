@@ -52,6 +52,10 @@ module.exports = {
     '^.+\\.jsx$': 'babel-jest',
     '^.+\\.js$': 'babel-jest'
   },
+
+  moduleNameMapper: {
+    '\\.(css|less|scss)$': '<rootDir>/node_modules/identity-obj-proxy',
+  },
   
   // Indicates whether each individual test should be reported during the run
   verbose: false,

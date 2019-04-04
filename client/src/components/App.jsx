@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import fetch from 'node-fetch';
 import PopularList from './PopularList.jsx';
+import '../style.scss';
 
 class App extends Component {
   constructor() {
