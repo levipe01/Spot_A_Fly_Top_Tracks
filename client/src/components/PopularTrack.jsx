@@ -1,35 +1,67 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Ellipsis from './Ellipsis.jsx';
+import ContextMenu from './ContextMenu.jsx';
 
-function PopularTrack({ track }) {
-  if (!track) return null;
-  return (
-    <div className="flex1">
-      <div className="flex2">
-        <div data-testid="track-icon" className="icon">
-          <i className="fas fa-music" />
-          <i className="fas fa-play" />
+class PopularTrack extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      display: false,
+      contextPosition: { top: 0, left: 0 },
+    };
+    this.showContext = this.showContext.bind(this);
+    this.hideContext = this.hideContext.bind(this);
+  }
+
+  showContext(event) {
+    event.preventDefault();
+    const newPosition = { left: event.clientX, top: event.clientY };
+    console.log(newPosition);
+    this.setState({ display: true, contextPosition: newPosition }, () => {
+      document.addEventListener('click', this.hideContext);
+    });
+  }
+
+  hideContext() {
+    this.setState({ display: false }, () => {
+      document.removeEventListener('click', this.hideContext);
+    });
+  }
+  
+  render() {
+    const { track } = this.props;
+    const { display, contextPosition } = this.state;
+    if (!track) return null;
+
+    return (
+      <div className="flex1" onContextMenu={this.showContext}>
+        {display && <ContextMenu position={contextPosition} />}
+        <div className="flex2">
+          <div data-testid="track-icon" className="icon">
+            <i className="fas fa-music" />
+            <i className="fas fa-play" />
+          </div>
+          <div className="image">
+            <img
+              data-testid="track-image"
+              src={track.image}
+              alt={track.name}
+            />
+          </div>
+          <div data-testid="track-name" className="trackName">
+            {track.name}
+          </div>
         </div>
-        <div className="image">
-          <img
-            data-testid="track-image"
-            src={track.image}
-            alt={track.name}
-          />
-        </div>
-        <div data-testid="track-name" className="trackName">
-          {track.name}
+        <div className="flex3">
+          <Ellipsis />
+          <div data-testid="track-length" className="trackLength">
+            {track.length}
+          </div>
         </div>
       </div>
-      <div className="flex3">
-        <Ellipsis />
-        <div data-testid="track-length" className="trackLength">
-          {track.length}
-        </div>
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 PopularTrack.propTypes = {
@@ -43,3 +75,50 @@ PopularTrack.propTypes = {
 };
 
 export default PopularTrack;
+
+
+// import React from 'react';
+// import PropTypes from 'prop-types';
+// import Ellipsis from './Ellipsis.jsx';
+
+// function PopularTrack({ track }) {
+//   if (!track) return null;
+//   return (
+//     <div className="flex1">
+//       <div className="flex2">
+//         <div data-testid="track-icon" className="icon">
+//           <i className="fas fa-music" />
+//           <i className="fas fa-play" />
+//         </div>
+//         <div className="image">
+//           <img
+//             data-testid="track-image"
+//             src={track.image}
+//             alt={track.name}
+//           />
+//         </div>
+//         <div data-testid="track-name" className="trackName">
+//           {track.name}
+//         </div>
+//       </div>
+//       <div className="flex3">
+//         <Ellipsis />
+//         <div data-testid="track-length" className="trackLength">
+//           {track.length}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+// PopularTrack.propTypes = {
+//   track: PropTypes.shape({
+//     name: PropTypes.string.isRequired,
+//     artist: PropTypes.string.isRequired,
+//     image: PropTypes.string.isRequired,
+//     playCount: PropTypes.number.isRequired,
+//     length: PropTypes.string.isRequired,
+//   }).isRequired
+// };
+
+// export default PopularTrack;

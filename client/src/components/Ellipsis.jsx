@@ -4,28 +4,37 @@ class Ellipsis extends Component {
   constructor() {
     super();
     this.state = {
-      menu: false
+      display: false
     };
-    this.toggleMenu = this.toggleMenu.bind(this);
+    this.showContext = this.showContext.bind(this);
+    this.hideContext = this.hideContext.bind(this);
   }
 
-  toggleMenu() {
-    const { menu } = this.state;
-    this.setState({
-      menu: !menu
+  showContext(event) {
+    event.preventDefault();
+
+    this.setState({ display: true }, () => {
+      document.addEventListener('click', this.hideContext);
+    });
+  }
+
+  hideContext() {
+    this.setState({ display: false }, () => {
+      document.removeEventListener('click', this.hideContext);
     });
   }
 
   render() {
-    const { menu } = this.state;
-    switch (menu) {
+    const { display } = this.state;
+    switch (display) {
       case false: return (
-        <div className="ellipsis" onClick={this.toggleMenu} data-testid="ellipsis">
+        // <div className="ellipsis" onClick={this.toggleMenu} data-testid="ellipsis">
+        <div className="ellipsis" onClick={this.showContext} data-testid="ellipsis">
           <i className="fas fa-ellipsis-h" />
         </div>
       );
       case true: return (
-        <div className="contextMenu" onClick={this.toggleMenu} data-testid="context-menu">
+        <div className="contextMenu" onClick={this.hideContext} data-testid="context-menu">
           <div>Start Radio</div>
           <div>Save to Your Library</div>
           <div>Add to Queue</div>
@@ -43,35 +52,3 @@ class Ellipsis extends Component {
 }
 
 export default Ellipsis;
-
-// import React from 'react';
-// import PropTypes from 'prop-types';
-
-// function Ellipsis({ menu, showMenu }) {
-//   switch (menu) {
-//     case false: return (
-//       <div className="ellipsis" onClick={showMenu}>
-//         <i className="fas fa-ellipsis-h" />
-//       </div>
-//     );
-//     case true: return (
-//       <div className="contextMenu">
-//         <div>Start Radio</div>
-//         <div>Save to Your Library</div>
-//         <div>Add to Queue</div>
-//         <div>Add to Playlist</div>
-//         <div>Copy Song Link</div>
-//       </div>
-//     );
-//     default: return (
-//       <div className="ellipsis">
-//         <i className="fas fa-ellipsis-h" />
-//       </div>
-//     );
-//   }
-// }
-
-// Ellipsis.propTypes = {
-//   menu: PropTypes.isRequired,
-//   showMenu: PropTypes.isRequired
-// };
