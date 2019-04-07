@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-class Ellipsis extends Component {
+class Ellipsis extends PureComponent {
   constructor() {
     super();
     this.state = {
