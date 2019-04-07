@@ -20,14 +20,6 @@ const songSchema = new mongoose.Schema({
 
 const Song = mongoose.model('Song', songSchema);
 
-// const getTopTracks = () => {
-//   return new Promise((resolve, reject) => {
-//     Song.find({}, 'name image playCount length -_id', (err, data) => {
-//       err ? reject(err) : resolve(data)
-//     }).limit(5).sort('-playCount')
-//   })
-// }
-
 const getTopTracks = () => Song.find({}, '_id name image playCount length')
   .limit(5)
   .sort('-playCount')
