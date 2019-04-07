@@ -27,6 +27,11 @@ module.exports = {
         "jest/no-identical-title": "error",
         "jest/prefer-to-have-length": "warn",
         "jest/valid-expect": "error",
-        "comma-dangle": "off"
+        "comma-dangle": "off",
+        "no-trailing-spaces": "off",
+        "no-plusplus": "off",
+        "import/extensions": "off",
+        "no-underscore-dangle": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
     }
 };

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> 1`] = `
+<div
+  data-testid="popular-main"
+  id="main"
+>
+  <div
+    id="left"
+  />
+  <div
+    id="content"
+  >
+    <h1
+      id="header"
+    >
+      Popular
+    </h1>
+    <div
+      data-testid="popular-list"
+    />
+  </div>
+</div>
+`;

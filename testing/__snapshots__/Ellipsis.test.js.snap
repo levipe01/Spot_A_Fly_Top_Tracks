@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Ellipsis w/ context menu /> 1`] = `
+<div
+  class="contextMenu"
+  data-testid="context-menu"
+>
+  <div>
+    Start Radio
+  </div>
+  <div>
+    Save to Your Library
+  </div>
+  <div>
+    Add to Queue
+  </div>
+  <div>
+    Add to Playlist
+  </div>
+  <div>
+    Copy Song Link
+  </div>
+</div>
+`;
+
+exports[`<Ellipsis w/ ellipsis /> 1`] = `
+<div
+  class="ellipsis"
+  data-testid="ellipsis"
+>
+  <i
+    class="fas fa-ellipsis-h"
+  />
+</div>
+`;
