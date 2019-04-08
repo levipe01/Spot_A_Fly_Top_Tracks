@@ -29,12 +29,12 @@ class PopularTrack extends Component {
   }
   
   render() {
-    const { track } = this.props;
+    const { track, setCurrentTrack } = this.props;
     const { display, contextPosition } = this.state;
     if (!track) return null;
 
     return (
-      <div className="flex1" data-testid="track" onContextMenu={this.showContext}>
+      <div className="flex1" data-testid="track" onDoubleClick={() => setCurrentTrack(track)} onContextMenu={this.showContext}>
         {display && <ContextMenu data-testid="context-menu" position={contextPosition} />}
         <div className="flex2">
           <div data-testid="track-icon" className="icon">
@@ -70,7 +70,8 @@ PopularTrack.propTypes = {
     image: PropTypes.string.isRequired,
     playCount: PropTypes.number.isRequired,
     length: PropTypes.string.isRequired,
-  }).isRequired
+  }).isRequired,
+  setCurrentTrack: PropTypes.func.isRequired
 };
 
 export default PopularTrack;

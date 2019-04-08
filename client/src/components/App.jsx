@@ -8,8 +8,10 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      tracks: []
+      tracks: [],
+      currentTrack: {},
     };
+    this.setCurrentTrack = this.setCurrentTrack.bind(this);
   }
 
   componentDidMount() {
@@ -25,8 +27,19 @@ class App extends Component {
       .catch(console.log);
   }
 
+  setCurrentTrack(track) {
+    this.setState({
+      currentTrack: {
+        name: track.name,
+        artist: track.artist,
+        image: track.image
+      }
+    });
+  }
+
   render() {
-    const { tracks } = this.state;
+    const { tracks, currentTrack } = this.state;
+    const { setCurrentTrack } = this;
     if (!tracks) return null;
    
     return (
@@ -34,9 +47,13 @@ class App extends Component {
         <div id="left" />
         <div id="content">
           <h1 id="header">Popular</h1>
-          <PopularList data-testid="popular-list" tracks={tracks} />
+          <PopularList 
+            data-testid="popular-list"
+            tracks={tracks}
+            setCurrentTrack={setCurrentTrack}
+          />
         </div>
-        <AudioPlayer />
+        <AudioPlayer currentTrack={currentTrack} />
       </div>
     );
   }
