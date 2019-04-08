@@ -25,4 +25,7 @@ test('<Ellipsis w/ context menu />', () => {
   expect(getByTestId('context-menu').firstChild.textContent).toBe('Start Radio');
   expect(getByTestId('context-menu').childElementCount).toBe(5);
   expect(container.firstChild).toMatchSnapshot();
+
+  fireEvent.click(getByTestId('context-menu'));
+  expect(queryByTestId('ellipsis')).toBeTruthy();
 });

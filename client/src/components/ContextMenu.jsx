@@ -13,7 +13,7 @@ function ContextMenu({ position }) {
   `;
 
   return (
-    <List className="contextMenu">
+    <List data-testid="list" className="contextMenu">
       <div>Start Radio</div>
       <div>Save to Your library</div>
       <div>Add to Queue</div>
