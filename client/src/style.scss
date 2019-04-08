@@ -122,3 +122,37 @@ i {
   background-color: #333;
   transition: all 0.3s ease;
 }
+
+.fa-play-circle {
+  font-size: 2em;
+}
+
+.progress {
+  width: 400px;
+}
+
+.volume {
+  width: 84px;
+}
+
+.songTime {
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: .015em;
+  min-width: 40px;
+  text-align: center;
+}
+
+.fa-circle {
+  color: white;
+  font-size: 0.75em;
+}
+
+.aTrackName {
+  color: #fff;
+  font-size: 14px;
+}
+
+.aArtistName {
+  font-size: 12px;
+}

@@ -32,7 +32,8 @@ class App extends Component {
       currentTrack: {
         name: track.name,
         artist: track.artist,
-        image: track.image
+        image: track.image,
+        length: track.length
       }
     });
   }
