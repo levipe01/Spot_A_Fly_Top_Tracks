@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import fetch from 'node-fetch';
 import PopularList from './PopularList.jsx';
 import '../style.scss';
+import AudioPlayer from './AudioPlayer.jsx';
 
 class App extends Component {
   constructor() {
@@ -35,6 +36,7 @@ class App extends Component {
           <h1 id="header">Popular</h1>
           <PopularList data-testid="popular-list" tracks={tracks} />
         </div>
+        <AudioPlayer />
       </div>
     );
   }
