@@ -1,4 +1,6 @@
-const { getTopTracks, bands, songs, images, dummyData } = require('../server/db');
+const {
+ getTopTracks, bands, songs, images, dummyData 
+} = require('../server/db');
 
 describe('getTopTracks functions', () => {
   let tracks;
@@ -22,6 +24,7 @@ describe('getTopTracks functions', () => {
 
   test('getTopTracks should return objects with properties _id, name, image, playCount, and length', () => {
     expect(tracks[0]).toHaveProperty('_id', 'name', 'image', 'playCount', 'length');
+    // db.collection.close();
   });
 });
 

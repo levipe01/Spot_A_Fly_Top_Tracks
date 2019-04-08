@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from 'react-testing-library';
+import { render, cleanup, fireEvent } from 'react-testing-library';
 import PopularTrack from '../client/src/components/PopularTrack.jsx';
 
 afterEach(() => {
@@ -29,4 +29,17 @@ test('<PopularTrack w/ track />', () => {
   expect(getByTestId('track-name').innerHTML).toBe(track.name);
   expect(getByTestId('track-length').innerHTML).toBe(track.length);
   expect(getByTestId('track-icon').firstChild.tagName).toEqual('I');
+});
+
+test('<PopularTrack w/ context menu />', () => {
+  const { getByTestId, queryByTestId } = render(<PopularTrack track={track} />);
+  expect(console.error).not.toBeCalled();
+
+  expect(queryByTestId('context-menu')).toBeFalsy();
+  fireEvent.contextMenu(getByTestId('track'));
+  expect(queryByTestId('list')).toBeTruthy();
+  expect(getByTestId('list').firstChild.textContent).toBe('Start Radio');
+
+  fireEvent.click(getByTestId('track'));
+  expect(queryByTestId('context-menu')).toBeFalsy();
 });

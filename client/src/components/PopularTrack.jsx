@@ -34,8 +34,8 @@ class PopularTrack extends Component {
     if (!track) return null;
 
     return (
-      <div className="flex1" onContextMenu={this.showContext}>
-        {display && <ContextMenu position={contextPosition} />}
+      <div className="flex1" data-testid="track" onContextMenu={this.showContext}>
+        {display && <ContextMenu data-testid="context-menu" position={contextPosition} />}
         <div className="flex2">
           <div data-testid="track-icon" className="icon">
             <i className="fas fa-music" />

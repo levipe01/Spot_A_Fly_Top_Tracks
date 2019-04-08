@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { PureComponent } from 'react';
 
 class Ellipsis extends PureComponent {
@@ -28,7 +30,6 @@ class Ellipsis extends PureComponent {
     const { display } = this.state;
     switch (display) {
       case false: return (
-        // <div className="ellipsis" onClick={this.toggleMenu} data-testid="ellipsis">
         <div className="ellipsis" onClick={this.showContext} data-testid="ellipsis">
           <i className="fas fa-ellipsis-h" />
         </div>
