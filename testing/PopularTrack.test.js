@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, cleanup, fireEvent } from 'react-testing-library';
 import PopularTrack from '../client/src/components/PopularTrack.jsx';
+import PopularList from '../client/src/components/PopularList.jsx';
 
 afterEach(() => {
   cleanup();
@@ -42,4 +43,19 @@ test('<PopularTrack w/ context menu />', () => {
 
   fireEvent.click(getByTestId('track'));
   expect(queryByTestId('context-menu')).toBeFalsy();
+});
+
+test('<PopularTrack double click />', async () => {
+  const tracks = [
+    {
+      name: 'test_name',
+      artist: 'test_artist',
+      image: 'test_image',
+      playCount: 100,
+      length: 'test_length',
+    }
+  ];
+  const setCurrentTrack = jest.fn();
+  const wrapper = await render(<PopularList setCurrentTrack={setCurrentTrack} tracks={tracks} />);
+  fireEvent.doubleClick(wrapper.getByTestId('track'));
 });

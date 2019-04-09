@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1554773813351" clover="3.2.0">
-  <project timestamp="1554773813351" name="All files">
-    <metrics statements="86" coveredstatements="81" conditionals="17" coveredconditionals="15" methods="28" coveredmethods="23" elements="131" coveredelements="119" complexity="0" loc="86" ncloc="86" packages="2" files="8" classes="8"/>
+<coverage generated="1554816967508" clover="3.2.0">
+  <project timestamp="1554816967508" name="All files">
+    <metrics statements="86" coveredstatements="82" conditionals="17" coveredconditionals="15" methods="28" coveredmethods="24" elements="131" coveredelements="121" complexity="0" loc="86" ncloc="86" packages="2" files="8" classes="8"/>
     <package name="client.src.components">
-      <metrics statements="60" coveredstatements="55" conditionals="17" coveredconditionals="15" methods="24" coveredmethods="20"/>
+      <metrics statements="60" coveredstatements="56" conditionals="17" coveredconditionals="15" methods="24" coveredmethods="21"/>
       <file name="App.jsx" path="/Users/danslaptop/ghrden01-Repos/dan-top-tracks/client/src/components/App.jsx">
         <metrics statements="12" coveredstatements="9" conditionals="2" coveredconditionals="1" methods="7" coveredmethods="4"/>
         <line num="9" count="1" type="stmt"/>
@@ -41,45 +41,45 @@
       </file>
       <file name="Ellipsis.jsx" path="/Users/danslaptop/ghrden01-Repos/dan-top-tracks/client/src/components/Ellipsis.jsx">
         <metrics statements="14" coveredstatements="13" conditionals="3" coveredconditionals="2" methods="6" coveredmethods="6"/>
-        <line num="7" count="7" type="stmt"/>
-        <line num="8" count="7" type="stmt"/>
-        <line num="11" count="7" type="stmt"/>
-        <line num="12" count="7" type="stmt"/>
+        <line num="7" count="8" type="stmt"/>
+        <line num="8" count="8" type="stmt"/>
+        <line num="11" count="8" type="stmt"/>
+        <line num="12" count="8" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
         <line num="24" count="2" type="stmt"/>
         <line num="25" count="2" type="stmt"/>
-        <line num="30" count="9" type="stmt"/>
-        <line num="31" count="9" type="cond" truecount="2" falsecount="1"/>
-        <line num="32" count="8" type="stmt"/>
+        <line num="30" count="10" type="stmt"/>
+        <line num="31" count="10" type="cond" truecount="2" falsecount="1"/>
+        <line num="32" count="9" type="stmt"/>
         <line num="37" count="1" type="stmt"/>
         <line num="46" count="0" type="stmt"/>
       </file>
       <file name="PopularList.jsx" path="/Users/danslaptop/ghrden01-Repos/dan-top-tracks/client/src/components/PopularList.jsx">
         <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
-        <line num="6" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="8" count="3" type="stmt"/>
-        <line num="11" count="3" type="stmt"/>
-        <line num="21" count="2" type="stmt"/>
+        <line num="6" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
       </file>
       <file name="PopularTrack.jsx" path="/Users/danslaptop/ghrden01-Repos/dan-top-tracks/client/src/components/PopularTrack.jsx">
-        <metrics statements="16" coveredstatements="15" conditionals="4" coveredconditionals="4" methods="7" coveredmethods="6"/>
-        <line num="8" count="6" type="stmt"/>
-        <line num="9" count="6" type="stmt"/>
-        <line num="13" count="6" type="stmt"/>
-        <line num="14" count="6" type="stmt"/>
+        <metrics statements="16" coveredstatements="16" conditionals="4" coveredconditionals="4" methods="7" coveredmethods="7"/>
+        <line num="8" count="7" type="stmt"/>
+        <line num="9" count="7" type="stmt"/>
+        <line num="13" count="7" type="stmt"/>
+        <line num="14" count="7" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
-        <line num="32" count="8" type="stmt"/>
-        <line num="33" count="8" type="stmt"/>
-        <line num="34" count="8" type="cond" truecount="2" falsecount="0"/>
-        <line num="36" count="7" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
+        <line num="32" count="9" type="stmt"/>
+        <line num="33" count="9" type="stmt"/>
+        <line num="34" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="36" count="8" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
         <line num="66" count="3" type="stmt"/>
       </file>
     </package>

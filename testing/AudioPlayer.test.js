@@ -34,5 +34,6 @@ test('<AudioPlayer w/ current track />', () => {
   const { getByTestId } = render(<AudioPlayer currentTrack={currentTrack} />);
   expect(getByTestId('left-flex-image')).toBeTruthy();
   expect(getByTestId('left-flex-track').textContent).toBe('test-name');
+  expect(getByTestId('audio-player').firstChild.nextSibling.textContent).toContain('test-length');
   expect(console.error).not.toBeCalled();
 });
