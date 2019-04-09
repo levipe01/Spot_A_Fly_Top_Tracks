@@ -8,17 +8,17 @@ function AudioPlayer({ currentTrack }) {
   } = currentTrack;
 
   return (
-    <Player>
+    <Player data-testid="audio-player">
       <LeftFlex>
-        <div>
+        <div data-testid="left-flex-image">
           {image ? <img src={image} alt="albumImage" /> : null}
         </div>
         <LeftInnerFlex>
-          <div className="aTrackName">{name}</div>
+          <div data-testid="left-flex-track" className="aTrackName">{name}</div>
           <div className="aArtistName">{artist}</div>
         </LeftInnerFlex>
         <Icon>
-          <i className="fas fa-plus" />
+          {image ? <i className="fas fa-plus" /> : null}
         </Icon>
       </LeftFlex>
       <CenterFlex>
@@ -110,6 +110,10 @@ const CenterFlex = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: fixed;
+    width: 500px;
+    right: 28%;
+    left 32%;
   `;
 
 const RightFlex = styled.div`

@@ -20,5 +20,126 @@ exports[`<App /> 1`] = `
       data-testid="popular-list"
     />
   </div>
+  <div
+    class="sc-bdVaJa fzAnnF"
+    data-testid="audio-player"
+  >
+    <div
+      class="sc-bwzfXH hbtsuL"
+    >
+      <div
+        data-testid="left-flex-image"
+      />
+      <div
+        class="sc-ifAKCX crxnwM"
+      >
+        <div
+          class="aTrackName"
+          data-testid="left-flex-track"
+        />
+        <div
+          class="aArtistName"
+        />
+      </div>
+      <div
+        class="sc-gzVnrw hMKRIA"
+      />
+    </div>
+    <div
+      class="sc-htpNat lnHBfK"
+    >
+      <div
+        class="sc-EHOje jgaqkh"
+      >
+        <div
+          class="sc-gzVnrw hMKRIA"
+        >
+          <i
+            class="fas fa-random"
+          />
+        </div>
+        <div
+          class="sc-gzVnrw hMKRIA"
+        >
+          <i
+            class="fas fa-step-backward"
+          />
+        </div>
+        <div
+          class="sc-gzVnrw hMKRIA"
+        >
+          <i
+            class="far fa-play-circle"
+          />
+        </div>
+        <div
+          class="sc-gzVnrw hMKRIA"
+        >
+          <i
+            class="fas fa-step-forward"
+          />
+        </div>
+        <div
+          class="sc-gzVnrw hMKRIA"
+        >
+          <i
+            class="fas fa-sync-alt"
+          />
+        </div>
+      </div>
+      <div
+        class="sc-bZQynM cvEEyx"
+      >
+        <div
+          class="songTime"
+        >
+          0:00
+        </div>
+        <i
+          class="fas fa-circle"
+        />
+        <div>
+          <hr
+            class="progress"
+          />
+        </div>
+        <div
+          class="songTime"
+        >
+          0:00
+        </div>
+      </div>
+    </div>
+    <div
+      class="sc-bxivhb jRtUmj"
+    >
+      <div
+        class="sc-gzVnrw hMKRIA"
+      >
+        <i
+          class="fas fa-sliders-h"
+        />
+      </div>
+      <div
+        class="sc-gzVnrw hMKRIA"
+      >
+        <i
+          class="fas fa-mobile-alt"
+        />
+      </div>
+      <div
+        class="sc-gzVnrw hMKRIA"
+      >
+        <i
+          class="fas fa-volume-up"
+        />
+      </div>
+      <div>
+        <hr
+          class="volume"
+        />
+      </div>
+    </div>
+  </div>
 </div>
 `;
