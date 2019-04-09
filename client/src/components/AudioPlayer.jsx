@@ -30,7 +30,7 @@ function AudioPlayer({ currentTrack }) {
             <i className="fas fa-step-backward" />
           </Icon>
           <Icon>
-            <i className="far fa-play-circle" />
+            {image ? <i className="far fa-pause-circle" /> : <i className="far fa-play-circle" />}
           </Icon>
           <Icon>
             <i className="fas fa-step-forward" />
