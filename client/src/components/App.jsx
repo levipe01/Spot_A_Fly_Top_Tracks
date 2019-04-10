@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   getTopTracks() {
-    fetch('http://localhost:3003/data/toptracks')
+    fetch('http://localhost:3005/data/toptracks')
       .then(results => results.json())
       .then((tracks) => {
         this.setState({ tracks });

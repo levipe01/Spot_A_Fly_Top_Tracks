@@ -9,7 +9,9 @@
     "testcoverage": "jest --coverage --colors --detectOpenHandles",
     "client": "webpack -d --watch",
     "server": "nodemon server/server.js",
-    "data": "node server/db.js"
+    "server-production": "node server/server.js",
+    "data": "node server/db.js",
+    "all": "npm run data & npm run server-production"
   },
   "repository": {
     "type": "git",
