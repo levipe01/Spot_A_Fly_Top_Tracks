@@ -91,6 +91,7 @@ const Player = styled.div`
     align-items: center;
     font-family: Helvetica Neue;
     font-weight: 300;
+    z-index: 2;
   `;
 
 const LeftFlex = styled.div`

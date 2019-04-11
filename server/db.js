@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const data = require('./z_seedData.js');
 
-mongoose.connect('mongodb://localhost:27017/topTracks');
+mongoose.connect('mongodb://database/topTracks');
 
 const db = mongoose.connection;
 
