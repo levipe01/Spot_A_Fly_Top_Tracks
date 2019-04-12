@@ -2,6 +2,7 @@
 
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors');
 const db = require('./db.js');
 
 const app = express();
@@ -12,7 +13,7 @@ const app = express();
 app.use(express.static(`${__dirname}/../client/dist`));
 app.use(express.json());
 app.use(morgan('dev'));
-
+app.use(cors());
 
 // Routes Setup
 

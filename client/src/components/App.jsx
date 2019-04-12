@@ -4,7 +4,7 @@ import PopularList from './PopularList.jsx';
 import '../style.scss';
 import AudioPlayer from './AudioPlayer.jsx';
 
-class App extends Component {
+class TopTracks extends Component {
   constructor() {
     super();
     this.state = {
@@ -16,6 +16,10 @@ class App extends Component {
 
   componentDidMount() {
     this.getTopTracks();
+    const context = this;
+    window.addEventListener('hashchange', () => {
+      context.forceUpdate();
+    });
   }
 
   getTopTracks() {
@@ -43,21 +47,28 @@ class App extends Component {
     const { setCurrentTrack } = this;
     if (!tracks) return null;
    
+    if (window.location.hash !== '#related') {
+      return (
+        <div id="main" data-testid="popular-main">
+          <div id="left" />
+          <div id="content">
+            <h1 id="header">Popular</h1>
+            <PopularList 
+              data-testid="popular-list"
+              tracks={tracks}
+              setCurrentTrack={setCurrentTrack}
+            />
+          </div>
+          <AudioPlayer currentTrack={currentTrack} />
+        </div>
+      );
+    } 
     return (
       <div id="main" data-testid="popular-main">
-        <div id="left" />
-        <div id="content">
-          <h1 id="header">Popular</h1>
-          <PopularList 
-            data-testid="popular-list"
-            tracks={tracks}
-            setCurrentTrack={setCurrentTrack}
-          />
-        </div>
         <AudioPlayer currentTrack={currentTrack} />
       </div>
     );
   }
 }
 
-export default App;
+export default TopTracks;
