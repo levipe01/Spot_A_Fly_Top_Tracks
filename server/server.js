@@ -10,10 +10,10 @@ const app = express();
 
 // Middelware Setup
 
+app.use(cors());
 app.use(express.static(`${__dirname}/../client/dist`));
 app.use(express.json());
 app.use(morgan('dev'));
-app.use(cors());
 
 // Routes Setup
 
