@@ -5,8 +5,8 @@ const data = require('./z_seedData.js');
 
 // mongoose.connect('mongodb://database/topTracks');
 
-const mongoURI = process.env.DB_URI || 'mongodb://database/topTracks';
-mongoose.connect(mongoURI);
+const mongoURI = 'mongodb://localhost/topTracks';
+mongoose.connect(mongoURI, { useNewUrlParser: true });
 
 const db = mongoose.connection;
 
