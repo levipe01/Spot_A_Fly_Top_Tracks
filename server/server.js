@@ -23,6 +23,31 @@ app.get('/data/toptracks', (req, res) => {
     .catch(console.log);
 });
 
+app.get('/data/toptracks/retrieve', (req, res) => {
+  db.getTopTracks()
+    .then(results => res.json(results))
+    .catch(console.log);
+});
+
+app.post('/data/toptracks/add', (req, res) => {
+  db.addTrack(req.body)
+    .then(results => res.json(results))
+    .catch(console.log);
+});
+
+app.post('/data/toptracks/remove', (req, res) => {
+  db.removeTrack()
+    .then(results => res.json(results))
+    .catch(console.log);
+});
+
+app.post('/data/toptracks/update', (req, res) => {
+  console.log(req.body)
+  db.updatePlayCount(req.body.name, req.body.playCount)
+    .then(results => res.json(results))
+    .catch(console.log);
+});
+
 
 // Server Setup
 
