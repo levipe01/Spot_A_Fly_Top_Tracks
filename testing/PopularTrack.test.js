@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, fireEvent } from 'react-testing-library';
+import { render, cleanup, fireEvent } from '@testing-library/react';
 import PopularTrack from '../client/src/components/PopularTrack.jsx';
 import PopularList from '../client/src/components/PopularList.jsx';
 

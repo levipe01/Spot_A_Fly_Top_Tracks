@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, fireEvent } from 'react-testing-library';
+import { render, cleanup, fireEvent } from '@testing-library/react';
 import Ellipsis from '../client/src/components/Ellipsis.jsx';
 
 afterEach(() => {
@@ -21,7 +21,7 @@ test('<Ellipsis w/ context menu />', () => {
   expect(queryByTestId('context-menu')).toBeFalsy();
   fireEvent.click(getByTestId('ellipsis'));
   expect(queryByTestId('ellipsis')).toBeFalsy();
-  
+
   expect(getByTestId('context-menu').firstChild.textContent).toBe('Start Radio');
   expect(getByTestId('context-menu').childElementCount).toBe(5);
   expect(container.firstChild).toMatchSnapshot();

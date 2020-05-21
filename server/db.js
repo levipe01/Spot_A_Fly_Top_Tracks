@@ -28,7 +28,7 @@ const getTopTracks = () => Song.find({}, '_id name artist image playCount length
   .sort('-playCount')
   .exec();
 
-// // Seed Data Generator
+// Seed Data Generator
 
 db.dropDatabase();
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from 'react-testing-library';
+import { render, cleanup } from '@testing-library/react';
 import AudioPlayer from '../client/src/components/AudioPlayer';
 
 afterEach(() => {
@@ -30,7 +30,7 @@ test('<AudioPlayer w/ current track />', () => {
     image: 'test-image',
     length: 'test-length',
   };
-  
+
   const { getByTestId } = render(<AudioPlayer currentTrack={currentTrack} />);
   expect(getByTestId('left-flex-image')).toBeTruthy();
   expect(getByTestId('left-flex-track').textContent).toBe('test-name');
