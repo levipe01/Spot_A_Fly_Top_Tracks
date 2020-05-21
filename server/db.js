@@ -45,9 +45,39 @@ const dummyData = (bands, songs, images) => {
   }
 };
 
+const addTrack = (track) => {
+  const newTrack = new Song(track)
+  console.log(newTrack)
+  return new Promise((resolve, reject) => {
+    newTrack.save(
+      function(err, projects) {
+        if (err) {
+          reject(err);
+        }
+          resolve(projects)
+      });
+  });
+}
+
+const updatePlayCount = (bandName, count) => {
+  // const newTrack = new Song(track)
+  console.log(bandName, count)
+  return new Promise((resolve, reject) => {
+    Song.update({ name: 'Eeriely Screeching Wind' }, { playCount: 1 });(
+      function(err, projects) {
+        if (err) {
+          reject(err);
+        }
+          resolve(projects)
+      });
+  });
+}
+
 dummyData(data.bands, data.songs, data.images);
 
 module.exports.getTopTracks = getTopTracks;
+module.exports.addTrack = addTrack;
+module.exports.updatePlayCount = updatePlayCount;
 module.exports.bands = data.bands;
 module.exports.songs = data.songs;
 module.exports.images = data.images;
