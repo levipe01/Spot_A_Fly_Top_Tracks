@@ -1,9 +1,7 @@
-// Dependencies Setup
-
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-const db = require('./db.js');
+const db = require('./mongo_db.js');
 
 const app = express();
 
@@ -23,27 +21,21 @@ app.get('/data/toptracks', (req, res) => {
     .catch(console.log);
 });
 
-app.get('/data/toptracks/retrieve', (req, res) => {
-  db.getTopTracks()
-    .then(results => res.json(results))
-    .catch(console.log);
-});
-
-app.post('/data/toptracks/add', (req, res) => {
+app.post('/data/toptracks', (req, res) => {
   db.addTrack(req.body)
     .then(results => res.json(results))
     .catch(console.log);
 });
 
-app.post('/data/toptracks/remove', (req, res) => {
+app.delete('/data/toptracks', (req, res) => {
   db.removeTrack()
     .then(results => res.json(results))
     .catch(console.log);
 });
 
-app.post('/data/toptracks/update', (req, res) => {
+app.put('/data/toptracks', (req, res) => { //put patch
   console.log(req.body)
-  db.updatePlayCount(req.body.name, req.body.playCount)
+  db.updatePlayCount(req.body._id, req.body.playCount)
     .then(results => res.json(results))
     .catch(console.log);
 });
