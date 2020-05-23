@@ -10,8 +10,8 @@ app.use(express.json());
 app.use(express.static('./client/dist'));
 
 app.get('/data/toptracks', (req, res) => {
-  const queryString = 'select * from songs where (artist=$1)';
-  const options = ['Spiralling Pistols'];//req.body.name
+  const queryString = 'select * from songs where (artistid=$1)';
+  const options = [req.query.id];//req.body.name
 
   db.query(queryString, options)
     .then((data) => {
