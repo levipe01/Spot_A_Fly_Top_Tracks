@@ -16,8 +16,12 @@ app.use(morgan('dev'));
 // Routes Setup
 
 app.get('/data/toptracks', (req, res) => {
+  console.log(req.query.id)
   db.getTopTracks(req.query.id)
-    .then(results => res.json(results))
+    .then(results => {
+      console.log(results)
+      res.json(results)
+    })
     .catch(console.log);
 });
 

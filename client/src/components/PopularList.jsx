@@ -4,7 +4,7 @@ import PopularTrack from './PopularTrack.jsx';
 
 function PopularList({ tracks, setCurrentTrack }) {
   if (!tracks) return <h1 data-testid="loading">Loading...</h1>;
-  
+
   return (
     <div data-testid="popular-list">
       {tracks.map(track => (
@@ -23,7 +23,7 @@ PopularList.propTypes = {
     name: PropTypes.string.isRequired,
     artist: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
-    playCount: PropTypes.number.isRequired,
+    playcount: PropTypes.number.isRequired,
     length: PropTypes.string.isRequired
   })).isRequired,
   setCurrentTrack: PropTypes.func.isRequired

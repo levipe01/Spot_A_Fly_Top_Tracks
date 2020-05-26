@@ -27,7 +27,7 @@ class PopularTrack extends Component {
       document.removeEventListener('click', this.hideContext);
     });
   }
-  
+
   render() {
     const { track, setCurrentTrack } = this.props;
     const { display, contextPosition } = this.state;
@@ -68,7 +68,7 @@ PopularTrack.propTypes = {
     name: PropTypes.string.isRequired,
     artist: PropTypes.string,
     image: PropTypes.string.isRequired,
-    playCount: PropTypes.number.isRequired,
+    playcount: PropTypes.number.isRequired,
     length: PropTypes.string.isRequired,
   }).isRequired,
   setCurrentTrack: PropTypes.func.isRequired

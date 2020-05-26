@@ -9,6 +9,7 @@ db.once('open', () => console.log('Connected to topTracks database...'));
 const songSchema = new mongoose.Schema({
   name: String,
   artist: String,
+  artistId: Number,
   image: String,
   playCount: Number,
   length: String
@@ -18,16 +19,17 @@ const Song = mongoose.model('Song', songSchema);
 
 const getTopTracks = (id) => {
   return new Promise((resolve, reject) => {
-    Song.find({artistId: id})
-    .limit(5)
-    .sort({playcount: -1})
-    .exec(
-      function(err, projects) {
-        if (err) {
-          reject(err);
-        }
-          resolve(projects)
-      });
+    Song.find({ artistId : `${id}` })
+      .limit(5)
+      .sort({playcount: -1})
+      .exec(
+        function(err, data) {
+          if (err) {
+            reject(err);
+          }
+            console.log('query',data)
+            resolve(data)
+        });
   });
 }
 
@@ -36,11 +38,11 @@ const addTrack = (track) => {
   console.log(newTrack)
   return new Promise((resolve, reject) => {
     newTrack.save(
-      function(err, projects) {
+      function(err, data) {
         if (err) {
           reject(err);
         }
-          resolve(projects)
+          resolve(data)
       });
   });
 }
@@ -49,11 +51,11 @@ const removeTrack = (track) => {
   console.log(track)
   return new Promise((resolve, reject) => {
     Song.deleteOne( { "_id" : `${track}` },
-      function(err, projects) {
+      function(err, data) {
         if (err) {
           reject(err);
         }
-          resolve(projects)
+          resolve(data)
       });
   });
 }
