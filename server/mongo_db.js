@@ -16,10 +16,11 @@ const songSchema = new mongoose.Schema({
 
 const Song = mongoose.model('Song', songSchema);
 
-const getTopTracks = () => {
+const getTopTracks = (id) => {
   return new Promise((resolve, reject) => {
-    Song.find({_id: "5ec71b8121e09c2197a353a3"})
+    Song.find({artistId: id})
     .limit(5)
+    .sort({playcount: -1})
     .exec(
       function(err, projects) {
         if (err) {
@@ -44,10 +45,10 @@ const addTrack = (track) => {
   });
 }
 
-const updatePlayCount = (id, count) => {
-  console.log(id, count)
+const removeTrack = (track) => {
+  console.log(track)
   return new Promise((resolve, reject) => {
-    Song.updateOne({ id: `${id}` }, { playCount: `${count}` },
+    Song.deleteOne( { "_id" : `${track}` },
       function(err, projects) {
         if (err) {
           reject(err);
@@ -57,7 +58,27 @@ const updatePlayCount = (id, count) => {
   });
 }
 
+const updatePlayCount = (id) => {
+  return Song.findOne({ "_id" : `${id}` }).then((doc) => {
+    console.log(JSON.stringify(doc))
+    doc.playCount++
+    doc.save()
+    return doc
+
+  })
+  // return new Promise((resolve, reject) => {
+  //   Song.updateOne({ "_id" : `${id}` }, {"$set": { "playcount": count } },
+  //     function(err, projects) {
+  //       if (err) {
+  //         reject(err);
+  //       }
+  //         resolve(projects)
+  //     });
+  // });
+}
+
 module.exports.getTopTracks = getTopTracks;
 module.exports.addTrack = addTrack;
+module.exports.removeTrack = removeTrack;
 module.exports.updatePlayCount = updatePlayCount;
 

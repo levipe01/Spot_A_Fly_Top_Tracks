@@ -9,7 +9,7 @@
     "testwatch": "jest --watch --no-cache",
     "testcoverage": "jest --coverage --colors --detectOpenHandles",
     "client": "webpack -d --watch",
-    "server": "nodemon server/postgres_server.js",
+    "server": "nodemon server/mongo_server.js",
     "server-production": "node server/server.js",
     "data": "node server/db.js",
     "all": "npm run data & npm run server-production"

@@ -16,7 +16,7 @@ app.use(morgan('dev'));
 // Routes Setup
 
 app.get('/data/toptracks', (req, res) => {
-  db.getTopTracks()
+  db.getTopTracks(req.query.id)
     .then(results => res.json(results))
     .catch(console.log);
 });
@@ -28,14 +28,13 @@ app.post('/data/toptracks', (req, res) => {
 });
 
 app.delete('/data/toptracks', (req, res) => {
-  db.removeTrack()
+  db.removeTrack(req.query.id)
     .then(results => res.json(results))
     .catch(console.log);
 });
 
-app.put('/data/toptracks', (req, res) => { //put patch
-  console.log(req.body)
-  db.updatePlayCount(req.body._id, req.body.playCount)
+app.put('/data/toptracks', (req, res) => {
+  db.updatePlayCount(req.body._id)
     .then(results => res.json(results))
     .catch(console.log);
 });

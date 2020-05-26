@@ -10,8 +10,8 @@ app.use(express.json());
 app.use(express.static('./client/dist'));
 
 app.get('/data/toptracks', (req, res) => {
-  const queryString = 'select * from songs where (artistid=$1)';
-  const options = [req.query.id];//req.body.name
+  const queryString = 'select * from songs where (artistid=$1) order by playcount desc limit 5';
+  const options = [req.query.id];
 
   db.query(queryString, options)
     .then((data) => {
@@ -35,7 +35,7 @@ app.post('/data/toptracks', (req, res) => {
 });
 
 app.put('/data/toptracks', (req, res) => {
-  const queryString = 'UPDATE songs SET playcount = $1 WHERE id = $2)';
+  const queryString = 'UPDATE songs SET playcount = $1 WHERE (id=$2)';
   const options = [req.body.playCount, req.body.id];
   db.query(queryString, options)
     .then((data) => {
@@ -47,8 +47,8 @@ app.put('/data/toptracks', (req, res) => {
 });
 
 app.delete('/data/toptracks', (req, res) => {
-  const queryString = 'DELETE FROM songs WHERE (name=$1)';
-  const options = [req.body.name]; //req.body.name
+  const queryString = 'DELETE FROM songs WHERE (id=$1)';
+  const options = [req.query.id];
   db.query(queryString, options)
     .then((data) => {
       res.status(200).json(data);
