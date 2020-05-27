@@ -10,23 +10,27 @@ class TopTracks extends Component {
     this.state = {
       tracks: [],
       currentTrack: {},
+      currentArtistId: null,
     };
     this.setCurrentTrack = this.setCurrentTrack.bind(this);
   }
 
   componentDidMount() {
-    this.getTopTracks();
+    this.setState({
+      currentArtistId: 10000,
+    }, () => {this.getTopTracks(this.state.currentArtistId);})
     const context = this;
     window.addEventListener('hashchange', () => {
       context.forceUpdate();
     });
   }
 
-  getTopTracks() {
-    fetch('/data/toptracks')
+  getTopTracks(artistId) {
+    fetch(`/data/toptracks?id=${artistId}`)
       .then(results => results.json())
       .then((tracks) => {
         this.setState({ tracks });
+
       })
       .catch(console.log);
   }
@@ -46,14 +50,14 @@ class TopTracks extends Component {
     const { tracks, currentTrack } = this.state;
     const { setCurrentTrack } = this;
     if (!tracks) return null;
-   
+
     if (window.location.hash !== '#related') {
       return (
         <div id="main" data-testid="popular-main">
           <div id="left" />
           <div id="content">
             <h1 id="header">Popular</h1>
-            <PopularList 
+            <PopularList
               data-testid="popular-list"
               tracks={tracks}
               setCurrentTrack={setCurrentTrack}
@@ -62,7 +66,7 @@ class TopTracks extends Component {
           <AudioPlayer currentTrack={currentTrack} />
         </div>
       );
-    } 
+    }
     return (
       <div id="main" data-testid="popular-main">
         <AudioPlayer currentTrack={currentTrack} />

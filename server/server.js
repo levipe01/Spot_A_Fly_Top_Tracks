@@ -1,36 +1,15 @@
-// Dependencies Setup
-
 const express = require('express');
 const morgan = require('morgan');
-const cors = require('cors');
-const db = require('./db.js');
+const db = require('../database/index.js');
+const router = require('./router/index.js');
 
 const app = express();
+const port = 3000;
 
-
-// Middelware Setup
-
-app.use(cors());
-app.use(express.static(`${__dirname}/../client/dist`));
-app.use(express.json());
 app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.static('./client/dist'));
 
-// Routes Setup
+app.use('/data/toptracks', router);
 
-app.get('/data/toptracks', (req, res) => {
-  db.getTopTracks()
-    .then(results => res.json(results))
-    .catch(console.log);
-});
-
-
-// Server Setup
-
-const PORT = process.env.PORT || 3003;
-
-app.listen(PORT, (err) => {
-  if (err) console.log('Error connecting to server...');
-  else {
-    console.log(`Server running on PORT: ${PORT}...`);
-  }
-});
+app.listen(port, () => console.log('Port:', port));
