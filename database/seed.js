@@ -9,31 +9,52 @@ const generateBandName = () => {
   let bandName = ''
 
   if(pathNumb === 0) {
-    bandName = 'The ' + randomPre + ' ' + randomSuf
+    if(pathNumb === 0) {
+      bandName = 'The ' + randomPre + ' ' + randomSuf + ' of ' + faker.address.city()
+    } else if(pathNumb === 1) {
+      bandName =  'The ' + randomPre + ' ' + randomSuf + ' of ' + faker.address.city() + faker.address.citySuffix()
+    } else if(pathNumb === 2) {
+      bandName = 'The ' + randomPre + ' ' + randomSuf + ' on ' + faker.address.streetName() + faker.address.streetSuffix()
+    }
   } else if(pathNumb === 1) {
-    bandName = randomPre + ' ' + randomSuf
+    if(pathNumb === 0) {
+      bandName = randomPre + ' ' + randomSuf + ' of ' + faker.address.city()
+    } else if(pathNumb === 1) {
+      bandName =  randomPre + ' ' + randomSuf + ' of ' + faker.address.city() + faker.address.citySuffix()
+    } else if(pathNumb === 2) {
+      bandName = randomPre + ' ' + randomSuf + ' on ' + faker.address.streetName() + faker.address.streetSuffix()
+    }
   } else if(pathNumb === 2) {
-    bandName = faker.name.firstName() + ' and the ' + randomPre + ' ' + randomSuf
+    if(pathNumb === 0) {
+      bandName = faker.name.firstName() + ' and the ' + randomPre + ' ' + randomSuf
+    } else if(pathNumb === 1) {
+      bandName = randomPre + ' ' + randomSuf + ' with ' + faker.name.findName()
+    } else if(pathNumb === 2) {
+      bandName = randomPre + ' ' + randomSuf + ' featuring ' + faker.name.findName()
+    }
   }
-
   return bandName;
 }
 
 const generateSongName = () => {
-  const pathNumb = Math.floor(Math.random() * 3)
+  const pathNumb = Math.floor(Math.random() * 5)
   const randFirst = preAndSuf[Math.floor(Math.random() * preAndSuf.length)];
   const randSecond = preAndSuf[Math.floor(Math.random() * preAndSuf.length)];
   const randThird = preAndSuf[Math.floor(Math.random() * preAndSuf.length)];
-  let songName = `${randFirst} ${randSecond} ${randThird}`
+  const randFourth = preAndSuf[Math.floor(Math.random() * preAndSuf.length)];
+  let songName = ''
 
   if(pathNumb === 0) {
-    songName = `${randFirst} ${randSecond} ${randThird}`
+    songName = `${randFirst} ${randSecond} ${randThird} ${randFourth}`
   } else if(pathNumb === 1) {
-    songName = `${randFirst} ${randSecond}`
+    songName = `${randFirst} ${randSecond} ${randThird}`
   } else if(pathNumb === 2) {
+    songName = `${randFirst} ${randSecond} ${randFourth}`
+  } else if(pathNumb === 3) {
     songName = faker.name.firstName() + loveSongSuffix[Math.floor(Math.random() * loveSongSuffix.length)];
+  } else if(pathNumb === 4) {
+    songName = faker.name.prefix() + ' ' + faker.name.findName() + ' of ' + faker.address.city()
   }
-
   return songName;
 };
 
@@ -109,6 +130,9 @@ const prefixes = [
   'Crushing',
   "Dead Man's",
   'Lords of',
+  'Queens of',
+  'Kings of',
+  'Joker and',
   'Burnt',
   'Wheeled',
   'Living',
@@ -143,7 +167,7 @@ const suffixes = [
   'Lampshades',
   'Scientists',
   'Ghosts',
-  'Dude and His Merry Gang of Band Nerds',
+  'Gang of Band Nerds',
   'Hunters',
   'Sirens',
   'Lozenges',
@@ -221,16 +245,42 @@ const suffixes = [
 ];
 
 const preAndSuf = prefixes.concat(suffixes);
-
 const seedDir = path.join(__dirname, 'seed.txt');
-let wstream = fs.createWriteStream(seedDir, {flags:'a'});
+const wstream = fs.createWriteStream(seedDir);
 
-for(let i = 0; i < 1000000; i++){
+wstream.write('name,artist,artistId,image,playcount,length\n', 'utf8');
+
+function writeSongs(writer, encoding, callback) {
+  let i = 80000000;
+  let id = 0;
+  let artistId = 1;
   let seedBandName = `${generateBandName()}`
-  for(let j = 0; j < 5; j++) {
-    let seedData = `${generateSongName()},${seedBandName},${generateAlbumPic()},${Math.floor(Math.random() * 10000)},${Math.floor(3 + (Math.random() * 3))}:${Math.floor(10 + (Math.random() * 50))}\n`
-    wstream.write(seedData);
+  function write() {
+    let ok = true;
+    do {
+      i -= 1;
+      id += 1;
+
+      if(id % 8 === 0){
+        artistId += 1
+        seedBandName = `${generateBandName()}`
+      }
+
+      let seedData = `${generateSongName()},${seedBandName},${artistId},${generateAlbumPic()},${Math.floor(Math.random() * 10000)},${Math.floor(3 + (Math.random() * 3))}:${Math.floor(10 + (Math.random() * 50))}\n`
+
+      if (i === 0) {
+        writer.write(seedData, encoding, callback);
+      } else {
+        ok = writer.write(seedData, encoding);
+      }
+    } while (i > 0 && ok);
+      if (i > 0) {
+        writer.once('drain', write);
+      }
   }
+  write();
 }
 
-wstream.end()
+writeSongs(wstream, 'utf-8', () => {
+  wstream.end()
+});

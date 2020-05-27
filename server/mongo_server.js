@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-const db = require('./mongo_db.js');
+const db = require('../database/mongo_db.js');
 
 const app = express();
 
