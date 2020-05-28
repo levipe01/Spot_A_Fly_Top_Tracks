@@ -60,7 +60,6 @@ const removeTrack = (track) => new Promise((resolve, reject) => {
 
 
 const updatePlayCount = (id) => {
-  console.log(id);
   return Song.findOne({ _id: `${id}` })
     .then((doc) => {
       doc.playcount += 1;
