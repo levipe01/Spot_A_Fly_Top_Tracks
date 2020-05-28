@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/Spot-A-Fly/SDC-Modules-PLevin-TopTracks#readme",
   "dependencies": {
+    "artillery": "^1.6.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.9.15",
