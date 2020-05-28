@@ -71,7 +71,7 @@ PopularTrack.propTypes = {
     playcount: PropTypes.number.isRequired,
     length: PropTypes.string.isRequired,
   }).isRequired,
-  setCurrentTrack: PropTypes.func.isRequired
+  setCurrentTrack: PropTypes.func.isRequired,
 };
 
 export default PopularTrack;

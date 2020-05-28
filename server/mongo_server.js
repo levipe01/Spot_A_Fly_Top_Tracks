@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
@@ -16,37 +17,36 @@ app.use(morgan('dev'));
 // Routes Setup
 
 app.get('/data/toptracks', (req, res) => {
-  console.log(req.query.id)
+  console.log(req.query.id);
   db.getTopTracks(req.query.id)
-    .then(results => {
-      console.log(results)
-      res.json(results)
+    .then((results) => {
+      res.json(results);
     })
     .catch(console.log);
 });
 
 app.post('/data/toptracks', (req, res) => {
   db.addTrack(req.body)
-    .then(results => res.json(results))
+    .then((results) => res.json(results))
     .catch(console.log);
 });
 
 app.delete('/data/toptracks', (req, res) => {
   db.removeTrack(req.query.id)
-    .then(results => res.json(results))
+    .then((results) => res.json(results))
     .catch(console.log);
 });
 
 app.put('/data/toptracks', (req, res) => {
+  // eslint-disable-next-line no-underscore-dangle
   db.updatePlayCount(req.body._id)
-    .then(results => res.json(results))
+    .then((results) => res.json(results))
     .catch(console.log);
 });
 
-
 // Server Setup
 
-const PORT = process.env.PORT || 3003;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, (err) => {
   if (err) console.log('Error connecting to server...');

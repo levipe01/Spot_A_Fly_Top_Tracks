@@ -1,5 +1,5 @@
+/* eslint-disable no-console */
 import React, { Component } from 'react';
-import fetch from 'node-fetch';
 import PopularList from './PopularList.jsx';
 import '../style.scss';
 import AudioPlayer from './AudioPlayer.jsx';
@@ -18,7 +18,7 @@ class TopTracks extends Component {
   componentDidMount() {
     this.setState({
       currentArtistId: 10000,
-    }, () => {this.getTopTracks(this.state.currentArtistId);})
+    }, () => { this.getTopTracks(this.state.currentArtistId); });
     const context = this;
     window.addEventListener('hashchange', () => {
       context.forceUpdate();
@@ -27,10 +27,9 @@ class TopTracks extends Component {
 
   getTopTracks(artistId) {
     fetch(`/data/toptracks?id=${artistId}`)
-      .then(results => results.json())
+      .then((results) => results.json())
       .then((tracks) => {
         this.setState({ tracks });
-
       })
       .catch(console.log);
   }
@@ -41,8 +40,8 @@ class TopTracks extends Component {
         name: track.name,
         artist: track.artist,
         image: track.image,
-        length: track.length
-      }
+        length: track.length,
+      },
     });
   }
 
