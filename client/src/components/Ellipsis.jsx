@@ -1,12 +1,10 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { PureComponent } from 'react';
 
 class Ellipsis extends PureComponent {
   constructor() {
     super();
     this.state = {
-      display: false
+      display: false,
     };
     this.showContext = this.showContext.bind(this);
     this.hideContext = this.hideContext.bind(this);
