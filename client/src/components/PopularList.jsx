@@ -7,8 +7,9 @@ function PopularList({ tracks, setCurrentTrack }) {
 
   return (
     <div data-testid="popular-list">
-      {tracks.map(track => (
+      {tracks.map((track) => (
         <PopularTrack
+          // eslint-disable-next-line no-underscore-dangle
           key={track._id}
           track={track}
           setCurrentTrack={setCurrentTrack}
@@ -24,9 +25,9 @@ PopularList.propTypes = {
     artist: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     playcount: PropTypes.number.isRequired,
-    length: PropTypes.string.isRequired
+    length: PropTypes.string.isRequired,
   })).isRequired,
-  setCurrentTrack: PropTypes.func.isRequired
+  setCurrentTrack: PropTypes.func.isRequired,
 };
 
 export default PopularList;

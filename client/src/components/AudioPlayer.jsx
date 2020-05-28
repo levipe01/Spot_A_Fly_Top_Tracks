@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 function AudioPlayer({ currentTrack }) {
   const {
-    name, artist, image, length 
+    name, artist, image, length,
   } = currentTrack;
 
   return (
@@ -72,7 +72,7 @@ AudioPlayer.propTypes = {
     artist: PropTypes.string,
     image: PropTypes.string,
     length: PropTypes.string,
-  }).isRequired
+  }).isRequired,
 };
 
 export default AudioPlayer;

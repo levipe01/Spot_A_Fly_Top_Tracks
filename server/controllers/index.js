@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const model = require('../models/index.js');
 
 module.exports = {
@@ -17,7 +18,7 @@ module.exports = {
         res.status(200).json(data);
       })
       .catch((e) => {
-        console.log(e)
+        console.log(e);
         res.status(400).json(e);
       });
   },

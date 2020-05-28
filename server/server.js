@@ -1,6 +1,6 @@
+/* eslint-disable no-console */
 const express = require('express');
 const morgan = require('morgan');
-const db = require('../database/index.js');
 const router = require('./router/index.js');
 
 const app = express();

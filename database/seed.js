@@ -1,69 +1,7 @@
 const faker = require('faker');
-const fs = require('fs')
+
+const fs = require('fs');
 const path = require('path');
-
-const generateBandName = () => {
-  const pathNumb = Math.floor(Math.random() * 3)
-  const randomPre = prefixes[Math.floor(Math.random() * prefixes.length)];
-  const randomSuf = suffixes[Math.floor(Math.random() * suffixes.length)];
-  let bandName = ''
-
-  if(pathNumb === 0) {
-    if(pathNumb === 0) {
-      bandName = 'The ' + randomPre + ' ' + randomSuf + ' of ' + faker.address.city()
-    } else if(pathNumb === 1) {
-      bandName =  'The ' + randomPre + ' ' + randomSuf + ' of ' + faker.address.city() + faker.address.citySuffix()
-    } else if(pathNumb === 2) {
-      bandName = 'The ' + randomPre + ' ' + randomSuf + ' on ' + faker.address.streetName() + faker.address.streetSuffix()
-    }
-  } else if(pathNumb === 1) {
-    if(pathNumb === 0) {
-      bandName = randomPre + ' ' + randomSuf + ' of ' + faker.address.city()
-    } else if(pathNumb === 1) {
-      bandName =  randomPre + ' ' + randomSuf + ' of ' + faker.address.city() + faker.address.citySuffix()
-    } else if(pathNumb === 2) {
-      bandName = randomPre + ' ' + randomSuf + ' on ' + faker.address.streetName() + faker.address.streetSuffix()
-    }
-  } else if(pathNumb === 2) {
-    if(pathNumb === 0) {
-      bandName = faker.name.firstName() + ' and the ' + randomPre + ' ' + randomSuf
-    } else if(pathNumb === 1) {
-      bandName = randomPre + ' ' + randomSuf + ' with ' + faker.name.findName()
-    } else if(pathNumb === 2) {
-      bandName = randomPre + ' ' + randomSuf + ' featuring ' + faker.name.findName()
-    }
-  }
-  return bandName;
-}
-
-const generateSongName = () => {
-  const pathNumb = Math.floor(Math.random() * 5)
-  const randFirst = preAndSuf[Math.floor(Math.random() * preAndSuf.length)];
-  const randSecond = preAndSuf[Math.floor(Math.random() * preAndSuf.length)];
-  const randThird = preAndSuf[Math.floor(Math.random() * preAndSuf.length)];
-  const randFourth = preAndSuf[Math.floor(Math.random() * preAndSuf.length)];
-  let songName = ''
-
-  if(pathNumb === 0) {
-    songName = `${randFirst} ${randSecond} ${randThird} ${randFourth}`
-  } else if(pathNumb === 1) {
-    songName = `${randFirst} ${randSecond} ${randThird}`
-  } else if(pathNumb === 2) {
-    songName = `${randFirst} ${randSecond} ${randFourth}`
-  } else if(pathNumb === 3) {
-    songName = faker.name.firstName() + loveSongSuffix[Math.floor(Math.random() * loveSongSuffix.length)];
-  } else if(pathNumb === 4) {
-    songName = faker.name.prefix() + ' ' + faker.name.findName() + ' of ' + faker.address.city()
-  }
-  return songName;
-};
-
-const generateAlbumPic = () => {
-  const randomNum = Math.floor(Math.random() * 151);
-  const imgURL = `https://source.unsplash.com/collection/893352/280x280/?sig=${randomNum}`;
-
-  return imgURL;
-}
 
 const loveSongSuffix = [
   '...',
@@ -72,8 +10,8 @@ const loveSongSuffix = [
   ' I Miss You',
   ' My Love',
   ' You Broke My Heart',
-  ' Why You Go and Leave Me?'
-]
+  ' Why You Go and Leave Me?',
+];
 
 const prefixes = [
   'Flaming',
@@ -152,7 +90,7 @@ const prefixes = [
   'Selective',
   'Swift',
   'Soaring',
-  'Mighty'
+  'Mighty',
 ];
 
 const suffixes = [
@@ -241,10 +179,75 @@ const suffixes = [
   'Children',
   'Love',
   'Equinox',
-  'Life'
+  'Life',
 ];
 
 const preAndSuf = prefixes.concat(suffixes);
+
+const generateBandName = () => {
+  const pathNumb = Math.floor(Math.random() * 3);
+  const randomPre = prefixes[Math.floor(Math.random() * prefixes.length)];
+  const randomSuf = suffixes[Math.floor(Math.random() * suffixes.length)];
+  let bandName = '';
+
+  if (pathNumb === 0) {
+    if (pathNumb === 0) {
+      bandName = `The ${randomPre} ${randomSuf} of ${faker.address.city()}`;
+    } else if (pathNumb === 1) {
+      bandName = `The ${randomPre} ${randomSuf} of ${faker.address.city()}${faker.address.citySuffix()}`;
+    } else if (pathNumb === 2) {
+      bandName = `The ${randomPre} ${randomSuf} on ${faker.address.streetName()}${faker.address.streetSuffix()}`;
+    }
+  } else if (pathNumb === 1) {
+    if (pathNumb === 0) {
+      bandName = `${randomPre} ${randomSuf} of ${faker.address.city()}`;
+    } else if (pathNumb === 1) {
+      bandName = `${randomPre} ${randomSuf} of ${faker.address.city()}${faker.address.citySuffix()}`;
+    } else if (pathNumb === 2) {
+      bandName = `${randomPre} ${randomSuf} on ${faker.address.streetName()}${faker.address.streetSuffix()}`;
+    }
+  } else if (pathNumb === 2) {
+    if (pathNumb === 0) {
+      bandName = `${faker.name.firstName()} and the ${randomPre} ${randomSuf}`;
+    } else if (pathNumb === 1) {
+      bandName = `${randomPre} ${randomSuf} with ${faker.name.findName()}`;
+    } else if (pathNumb === 2) {
+      bandName = `${randomPre} ${randomSuf} featuring ${faker.name.findName()}`;
+    }
+  }
+  return bandName;
+};
+
+const generateSongName = () => {
+  const pathNumb = Math.floor(Math.random() * 5);
+  const randFirst = preAndSuf[Math.floor(Math.random() * preAndSuf.length)];
+  const randSecond = preAndSuf[Math.floor(Math.random() * preAndSuf.length)];
+  const randThird = preAndSuf[Math.floor(Math.random() * preAndSuf.length)];
+  const randFourth = preAndSuf[Math.floor(Math.random() * preAndSuf.length)];
+  let songName = '';
+
+  if (pathNumb === 0) {
+    songName = `${randFirst} ${randSecond} ${randThird} ${randFourth}`;
+  } else if (pathNumb === 1) {
+    songName = `${randFirst} ${randSecond} ${randThird}`;
+  } else if (pathNumb === 2) {
+    songName = `${randFirst} ${randSecond} ${randFourth}`;
+  } else if (pathNumb === 3) {
+    songName = faker.name.firstName() + loveSongSuffix[Math.floor(Math.random()
+      * loveSongSuffix.length)];
+  } else if (pathNumb === 4) {
+    songName = `${faker.name.prefix()} ${faker.name.findName()} of ${faker.address.city()}`;
+  }
+  return songName;
+};
+
+const generateAlbumPic = () => {
+  const randomNum = Math.floor(Math.random() * 151);
+  const imgURL = `https://source.unsplash.com/collection/893352/280x280/?sig=${randomNum}`;
+
+  return imgURL;
+};
+
 const seedDir = path.join(__dirname, 'seed.txt');
 const wstream = fs.createWriteStream(seedDir);
 
@@ -254,19 +257,18 @@ function writeSongs(writer, encoding, callback) {
   let i = 80000000;
   let id = 0;
   let artistId = 1;
-  let seedBandName = `${generateBandName()}`
+  let seedBandName = `${generateBandName()}`;
   function write() {
     let ok = true;
     do {
       i -= 1;
       id += 1;
 
-      if(id % 8 === 0){
-        artistId += 1
-        seedBandName = `${generateBandName()}`
+      if (id % 8 === 0) {
+        artistId += 1;
+        seedBandName = `${generateBandName()}`;
       }
-
-      let seedData = `${generateSongName()},${seedBandName},${artistId},${generateAlbumPic()},${Math.floor(Math.random() * 10000)},${Math.floor(3 + (Math.random() * 3))}:${Math.floor(10 + (Math.random() * 50))}\n`
+      const seedData = `${generateSongName()},${seedBandName},${artistId},${generateAlbumPic()},${Math.floor(Math.random() * 10000)},${Math.floor(3 + (Math.random() * 3))}:${Math.floor(10 + (Math.random() * 50))}\n`;
 
       if (i === 0) {
         writer.write(seedData, encoding, callback);
@@ -274,13 +276,13 @@ function writeSongs(writer, encoding, callback) {
         ok = writer.write(seedData, encoding);
       }
     } while (i > 0 && ok);
-      if (i > 0) {
-        writer.once('drain', write);
-      }
+    if (i > 0) {
+      writer.once('drain', write);
+    }
   }
   write();
 }
 
 writeSongs(wstream, 'utf-8', () => {
-  wstream.end()
+  wstream.end();
 });
