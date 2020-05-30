@@ -1,0 +1,26 @@
+config:
+  target: 'http://localhost:3000'
+  phases:
+    - duration: 10
+      arrivalRate: 10
+      rampTo: 70
+      name: "Warm up"
+    - duration: 60
+      arrivalRate: 70
+      name: "Max load"
+  processor: "./stress_test_funcs.js"
+
+scenarios:
+  - flow:
+    - get:
+        url: "/"
+    - get:
+        url: "/bundle.js"
+    - loop:
+        - function: "generateRandomArtistId"
+        - get:
+            url: "/data/toptracks?id={{ query }}"
+      count: 20
+
+
+

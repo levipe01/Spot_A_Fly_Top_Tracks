@@ -3,7 +3,10 @@
 const mongoose = require('mongoose');
 
 const mongoURI = 'mongodb://localhost/topTracks';
-mongoose.connect(mongoURI, { useNewUrlParser: true });
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  poolSize: 50,
+});
 const db = mongoose.connection;
 
 db.on('error', () => console.log('Error connecting to topTracks database...'));
@@ -28,7 +31,6 @@ const getTopTracks = (id) => new Promise((resolve, reject) => {
       if (err) {
         reject(err);
       }
-      console.log('query', data);
       resolve(data);
     });
 });
@@ -59,14 +61,12 @@ const removeTrack = (track) => new Promise((resolve, reject) => {
 });
 
 
-const updatePlayCount = (id) => {
-  return Song.findOne({ _id: `${id}` })
-    .then((doc) => {
-      doc.playcount += 1;
-      doc.save();
-      return doc;
-    });
-};
+const updatePlayCount = (id) => Song.findOne({ _id: `${id}` })
+  .then((doc) => {
+    doc.playcount += 1;
+    doc.save();
+    return doc;
+  });
 
 module.exports.getTopTracks = getTopTracks;
 module.exports.addTrack = addTrack;

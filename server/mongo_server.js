@@ -1,23 +1,23 @@
 /* eslint-disable no-console */
+require('newrelic');
 const express = require('express');
 const morgan = require('morgan');
-const cors = require('cors');
 const db = require('../database/mongo_db.js');
 
 const app = express();
+const PORT = 3000;
 
 
 // Middelware Setup
 
-app.use(cors());
-app.use(express.static(`${__dirname}/../client/dist`));
-app.use(express.json());
 app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.static('./client/dist'));
+
 
 // Routes Setup
 
 app.get('/data/toptracks', (req, res) => {
-  console.log(req.query.id);
   db.getTopTracks(req.query.id)
     .then((results) => {
       res.json(results);
@@ -45,8 +45,6 @@ app.put('/data/toptracks', (req, res) => {
 });
 
 // Server Setup
-
-const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, (err) => {
   if (err) console.log('Error connecting to server...');
