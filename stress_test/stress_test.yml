@@ -3,10 +3,10 @@ config:
   phases:
     - duration: 10
       arrivalRate: 10
-      rampTo: 70
+      rampTo: 90
       name: "Warm up"
     - duration: 60
-      arrivalRate: 70
+      arrivalRate: 250
       name: "Max load"
   processor: "./stress_test_funcs.js"
 
@@ -20,7 +20,7 @@ scenarios:
         - function: "generateRandomArtistId"
         - get:
             url: "/data/toptracks?id={{ query }}"
-      count: 20
+      count: 10
 
 
 
