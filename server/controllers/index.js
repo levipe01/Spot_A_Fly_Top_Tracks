@@ -11,14 +11,18 @@ module.exports = {
       .catch(() => {
         model.getTopTracksByArtistId(req)
           .then((data) => {
-            res.status(200).json(data.rows);
+            if (!data.rows.length) {
+              throw Error();
+            } else {
+              res.status(200).json(data.rows);
+            }
             return data.rows;
           })
           .then((data) => {
             redis.addTrack(data);
           })
-          .catch((e) => {
-            res.status(400).json(e);
+          .catch(() => {
+            res.status(404).json('no data found');
           });
       });
   },

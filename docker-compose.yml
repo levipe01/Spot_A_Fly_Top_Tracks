@@ -3,10 +3,13 @@ version: '3'
 services:
   client:
     build: .
+    image: levipe01/sdc-module-top-tracks:latest
     depends_on:
-      - 'database'
-    ports: 
-      - '3003:3003'
+      - 'cache'
+    ports:
+      - '80:3003'
+    env_file:
+      - ./config.env
 
-  database:
-    image: mongo:latest
+  cache:
+    image: redis

@@ -2,3 +2,6 @@ node_modules
 coverage
 seed.txt
 bundle.js
+newrelic.js
+.env
+config.env

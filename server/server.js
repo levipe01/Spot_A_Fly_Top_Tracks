@@ -3,9 +3,10 @@ require('newrelic');
 const express = require('express');
 const morgan = require('morgan');
 const router = require('./router/index.js');
+const config = require('../config.js');
 
 const app = express();
-const port = 3000;
+const { port } = config.app;
 
 app.use(morgan('dev'));
 app.use(express.json());

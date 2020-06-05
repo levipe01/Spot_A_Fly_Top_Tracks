@@ -1,6 +1,11 @@
 /coverage
 /node_modules
 /testing
-/client/src
 .eslintrc.js
 .gitignore
+.env
+config.env
+bundle.js
+npm-debug.log
+.git
+.cache

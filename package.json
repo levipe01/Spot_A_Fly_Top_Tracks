@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "bang": "artillery run stress_test/stress_test.yml",
+    "build": "webpack -p",
     "db-seed": "node database/seed.js && node database/database_import.js",
     "test": "jest",
     "testwatch": "jest --watch --no-cache",
@@ -12,7 +13,7 @@
     "client": "webpack -d --watch",
     "server": "nodemon server/server.js",
     "mongo-server": "nodemon server/mongo_server.js",
-    "server-production": "node server/server.js",
+    "start": "node server/server.js",
     "all": "npm run data & npm run server-production"
   },
   "repository": {
@@ -27,29 +28,35 @@
   "homepage": "https://github.com/Spot-A-Fly/SDC-Modules-PLevin-TopTracks#readme",
   "dependencies": {
     "artillery": "^1.6.0",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "babel-plugin-dynamic-import-node": "^2.3.3",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "mongoose": "^5.9.15",
     "morgan": "^1.10.0",
     "newrelic": "^6.8.0",
+    "node-sass": "^4.14.1",
     "pg": "^8.2.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
     "redis": "^3.0.2",
-    "styled-components": "^5.1.0"
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "styled-components": "^5.1.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.6",
-    "@babel/preset-env": "^7.9.6",
-    "@babel/preset-react": "^7.9.4",
     "@testing-library/react": "^10.0.4",
     "babel-jest": "^26.0.1",
-    "babel-plugin-dynamic-import-node": "^2.3.3",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "css-loader": "^3.5.3",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
@@ -59,11 +66,6 @@
     "eslint-plugin-react-hooks": "^2.5.0",
     "jest": "^26.0.1",
     "jest-fetch-mock": "^3.0.3",
-    "node-sass": "^4.14.1",
-    "nodemon": "^2.0.4",
-    "sass-loader": "^8.0.2",
-    "style-loader": "^1.2.1",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
+    "nodemon": "^2.0.4"
   }
 }
