@@ -1,31 +1,31 @@
-Spot-A-Fly - Header Microservice
+#Spot-A-Fly - Top Tracks Microservice
 A clone of the Spotify artist page.
 
+![](CloneAzonDemo.gif)
 
-
-Getting Started
+##Getting Started
 Clone this repository from by running: git clone https://github.com/Spot-A-Fly/SDC-Modules-JGKapp-Header.git
 
-Prerequisites
+##Prerequisites
 Node.js npm
 PostgreSQL
 
-Installing
+##Installing
 Install all dependencies. Seed database. Run server.
 
-npm install
+##npm install
 npm run db-seed
 npm start
 Navigate to http://localhost:3003 to visit the Spot-A-Fly top tracks service.
 
-Built With
+##Built With
 PostgreSQL
 Express.js
 React
 Node.js
 
-Authors
+##Authors
 Peter Levin - GitHub
 
-License
+##License
 This project is licensed under the MIT License - see the LICENSE.md file for details
