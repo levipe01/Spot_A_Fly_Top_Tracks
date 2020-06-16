@@ -14,15 +14,15 @@ PostgreSQL
 Install all dependencies. Seed database. Run server.
 
 ## npm install
-npm run db-seed. 
-npm start. 
+npm run db-seed <br/>
+npm start <br/>
 Navigate to http://localhost:3003 to visit the Spot-A-Fly top tracks service. 
 
 ## Built With
-PostgreSQL. 
-Express.js. 
-React. 
-Node.js. 
+PostgreSQL <br/>
+Express.js  <br/>
+React <br/>
+Node.js  
 
 ## Authors
 Peter Levin - GitHub
