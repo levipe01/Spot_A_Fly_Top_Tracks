@@ -7,22 +7,22 @@ A clone of the Spotify artist page.
 Clone this repository from by running: git clone https://github.com/levipe01/Spot_A_Fly_Top_Tracks.git 
 
 ## Prerequisites
-Node.js npm
+Node.js npm. 
 PostgreSQL
 
 ## Installing
 Install all dependencies. Seed database. Run server.
 
 ## npm install
-npm run db-seed
-npm start
-Navigate to http://localhost:3003 to visit the Spot-A-Fly top tracks service.
+npm run db-seed. 
+npm start. 
+Navigate to http://localhost:3003 to visit the Spot-A-Fly top tracks service. 
 
 ## Built With
-PostgreSQL
-Express.js
-React
-Node.js
+PostgreSQL. 
+Express.js. 
+React. 
+Node.js. 
 
 ## Authors
 Peter Levin - GitHub
